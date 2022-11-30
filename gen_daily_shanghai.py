@@ -10,8 +10,6 @@ SUBSTATUS_UNKNOWN = 0
 SUBSTATUS_PATIENT = 1 # 病例
 SUBSTATUS_REASON = 2
 
-
-
 def init():
     return "", 0, 0, "", "", []
 def parse_patient(line, level):
@@ -56,7 +54,7 @@ def main():
     sql_prefix = "INSERT INTO daily_input (`level`, district, start_id, end_id, source_from, `isolation`) VALUES\n"
     sql = []
 
-    for line_no, line in enumerate(lines):
+    for line in lines:
         line = line.strip()
         if line == "本土病例情况":
             status = STATUS_LEVEL_1
