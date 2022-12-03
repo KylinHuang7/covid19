@@ -18,7 +18,7 @@ def init():
 def parse_patient(line):
     num, loc = line.split("：")
     start, end = 0, 0
-    if "至" not in num:
+    if "至" not in num and "、" not in num:
         start = end = re.findall(r"\d+", num)[0]
     else:
         p = re.findall(r"\d+", num)
