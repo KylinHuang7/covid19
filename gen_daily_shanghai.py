@@ -36,8 +36,8 @@ def parse_patient(line, level):
 
 def parse_reason(left):
     left = left.lstrip("均系").lstrip("系")
-    pos = left.find("异常")
-    return left[:pos] + "异常"
+    pos = left.find("发现")
+    return left[:pos] + "发现"
 
 def output(sql, status, tmp, reason):
     for line in tmp:

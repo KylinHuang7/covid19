@@ -11,7 +11,11 @@ def init():
     return {}, 0, 0, ""
 
 def parse_patient(line):
-    num, loc = line.split(":")
+    num, loc = "", ""
+    if ":" in line:
+        num, loc = line.split(":")
+    elif "：" in line:
+        num, loc = line.split("：")
     start, end = 0, 0
     if "-" not in num:
         start = end = re.findall(r"\d+", num)[0]
@@ -66,7 +70,7 @@ def main():
 
     for line in lines:
         line = line.strip()
-        if line.startswith("病例") and ":" in line:
+        if line.startswith("病例") and (":" in line or "：" in line):
             start, end, district, left = parse_patient(line)
             if district not in round_map:
                 round_map[district] = 0
