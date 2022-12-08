@@ -42,6 +42,8 @@ def parse_reason(left):
         return REASON_OUT_CONTROL
     elif "非闭环管理" in left:
         return REASON_OUT_CONTROL
+    elif "自测抗原" in left:
+        return REASON_OUT_CONTROL
     return REASON_IN_CONTROL
 
 def assign_map(source_map, target_map):

@@ -35,9 +35,14 @@ def parse_patient(line, level):
     return district, start, end, left
 
 def parse_reason(left):
-    left = left.lstrip("均系").lstrip("系")
-    pos = left.find("发现")
-    return left[:pos] + "发现"
+    if "发现" in left:
+        left = left.lstrip("均系").lstrip("系")
+        pos = left.find("发现")
+        return left[:pos] + "发现"
+    elif "阳性" in left:
+        left = left.lstrip("以上人员")
+        pos = left.find("阳性")
+        return left[:pos] + "阳性"
 
 def output(sql, status, tmp, reason):
     for line in tmp:

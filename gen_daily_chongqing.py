@@ -40,6 +40,8 @@ def parse_patient(line):
         reason = REASON_OUT_CONTROL
     elif "扩面核酸检测" in left:
         reason = REASON_OUT_CONTROL
+    elif "社区筛查" in left:
+        reason = REASON_OUT_CONTROL
     return int(start), int(end), reason
 
 def output(csv, map):
